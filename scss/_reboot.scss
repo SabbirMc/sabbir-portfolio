@@ -1,0 +1,82 @@
+@import url("https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700&family=Krona+One&family=Playfair+Display:ital@1&display=swap");
+
+// selection
+::selection {
+  color: $black;
+  background: rgba($white, 0.8);
+}
+
+// basic
+* {
+  margin: 0;
+  padding: 0;
+  outline: none;
+  border: none;
+  box-sizing: border-box;
+}
+
+html {
+  font-size: 16px;
+}
+
+body {
+  font-family: "DM Sans", sans-serif;
+  line-height: 1.2;
+  font-weight: 400;
+  letter-spacing: 0;
+  min-height: 100vh;
+  background: $base;
+  color: $white;
+  overflow-x: hidden;
+  &::-webkit-scrollbar {
+    width: 4px;
+  }
+  &::-webkit-scrollbar-track {
+    background-color: $secondary;
+  }
+  &::-webkit-scrollbar-thumb {
+    border-radius: 5px;
+    background-color: $primary;
+  }
+}
+
+a {
+  color: initial;
+  transition: all 0.1s linear;
+  text-decoration: none;
+}
+label {
+  margin-bottom: 0;
+}
+button {
+  vertical-align: middle;
+  background: unset;
+  &:not(:disabled) {
+    cursor: pointer;
+  }
+}
+img,
+object,
+svg,
+video {
+  max-width: 100%;
+}
+
+@keyframes Transorm2D {
+  0% {
+    left: 100%;
+  }
+  100% {
+    left: -150%;
+  }
+}
+@keyframes ping {
+  75% {
+    transform: scale(1);
+    opacity: 1;
+  }
+  100% {
+    transform: scale(2);
+    opacity: 0;
+  }
+}
