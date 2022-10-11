@@ -1,7 +1,6 @@
 import React, { useState, useEffect, useContext, useRef } from "react";
 import Context from "./context/context";
 import { InView } from "react-intersection-observer";
-import { ParallaxProvider, Parallax } from "react-scroll-parallax";
 
 const Projects = () => {
   const { ref, setSectionVisible } = useContext(Context);
