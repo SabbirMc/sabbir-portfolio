@@ -9,38 +9,30 @@ const Projects = () => {
   const [nextButtonDisable, setNextButtonDisable] = useState(false);
 
   const projects = [
-    <>
-      <div className="left"></div>
-      <div className="right">
-        <h3 className="title">Easy.jobs</h3>
-        <p className="text">To Attract, Manage &amp; Hire Right Talent</p>
-      </div>
-    </>,
-    <>
-      <div className="left"></div>
-      <div className="right">
-        <h3 className="title">Easy.jobs</h3>
-        <p className="text">To Attract, Manage &amp; Hire Right Talent</p>
-      </div>
-    </>,
-    <>
-      <div className="left"></div>
-      <div className="right">
-        <h3 className="title">Easy.jobs</h3>
-        <p className="text">To Attract, Manage &amp; Hire Right Talent</p>
-      </div>
-    </>,
-    <>
-      <div className="left"></div>
-      <div className="right">
-        <h3 className="title">Easy.jobs</h3>
-        <p className="text">To Attract, Manage &amp; Hire Right Talent</p>
-      </div>
-    </>,
+    {
+      link: "https://images.pexels.com/photos/60597/dahlia-red-blossom-bloom-60597.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2",
+      title: "Easy.jobs",
+      description: "To Attract, Manage & Hire Right Talent",
+    },
+    {
+      link: "https://images.pexels.com/photos/36717/amazing-animal-beautiful-beautifull.jpg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2",
+      title: "Templately.com",
+      description: "To Attract, Manage & Hire Right Talent",
+    },
+    {
+      link: "https://images.pexels.com/photos/33045/lion-wild-africa-african.jpg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2",
+      title: "NotificationX",
+      description: "To Attract, Manage & Hire Right Talent",
+    },
+    {
+      link: "https://images.pexels.com/photos/753626/pexels-photo-753626.jpeg",
+      title: "xCloud",
+      description: "To Attract, Manage & Hire Right Talent",
+    },
   ];
 
   const handleActiveState = (type) => {
-    if (type == "next" && activeProject < projects.length) {
+    if (type == "next" && activeProject < projects.length - 1) {
       setActiveProject(++activeProject);
     }
     if (type == "prev" && activeProject > 0) {
@@ -53,7 +45,7 @@ const Projects = () => {
     activeProject == 0
       ? setPrevButtonDisable(true)
       : setPrevButtonDisable(false);
-    activeProject == projects.length
+    activeProject == projects.length - 1
       ? setNextButtonDisable(true)
       : setNextButtonDisable(false);
   }, [activeProject]);
@@ -78,10 +70,25 @@ const Projects = () => {
             onClick={() => handleActiveState("prev")}
             disabled={prevButtonDisable}
           ></button>
-          <div className="project_wrapper">
+          <div
+            className="project_wrapper"
+            style={{
+              transform: `translate(-${activeProject * 450}px, -${
+                activeProject * 250
+              }px)`,
+            }}
+          >
             {projects?.map((project) => (
               <div className="project" key={Math.random()}>
-                {project}
+                <div className="left">
+                  {project?.link && (
+                    <img src={project?.link} alt={project?.title} />
+                  )}
+                </div>
+                <div className="right">
+                  <h3 className="title">{project?.title}</h3>
+                  <p className="text">{project?.description}</p>
+                </div>
               </div>
             ))}
           </div>

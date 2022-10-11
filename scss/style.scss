@@ -152,7 +152,7 @@
   gap: 30px;
   padding: 100px 20px 100px 50px;
   backdrop-filter: blur(10px);
-  background: rgba($secondary, 0.5);
+  background: rgba($secondary, 0.7);
   width: 100vw;
   visibility: hidden;
   opacity: 0;
@@ -163,12 +163,14 @@
     cursor: pointer;
     text-align: right;
     text-transform: uppercase;
-    font-size: 20px;
+    font-size: 40px;
     font-family: "Krona One", sans-serif;
     padding: 10px 20px;
     transition: color 0.1s linear;
-    &.active,
     &:hover {
+      color: darken($white, 50%);
+    }
+    &.active {
       color: $primary;
     }
   }
@@ -397,6 +399,7 @@
     flex: 1;
     overflow: hidden;
     margin-bottom: 80px;
+    overflow: hidden;
     .prev_button,
     .next_button {
       width: 50px;
@@ -405,23 +408,27 @@
       border-radius: 5px;
       position: absolute;
       cursor: pointer;
+      z-index: 1;
       &:before {
         content: "";
         position: absolute;
         left: 50%;
         top: 50%;
-        width: 25px;
-        height: 3px;
+        width: 20px;
+        height: 2px;
         background: white;
         transform: translate(-50%, -50%);
+        pointer-events: none;
       }
       &:after {
         content: "";
         position: absolute;
         top: 50%;
-        width: 10px;
-        height: 10px;
+        width: 5px;
+        height: 5px;
         transform-origin: center center;
+        pointer-events: none;
+        border: 2px solid;
       }
       &:disabled {
         background: rgba($white, 0.05);
@@ -432,36 +439,25 @@
       }
       &:not(:disabled) {
         &:hover {
-          background: $white;
-          &:before {
-            background-color: $black;
-          }
+          background: $primary;
         }
       }
     }
     .prev_button {
-      bottom: 0;
-      left: 0;
+      top: 0;
+      right: 70px;
       &:after {
         right: 50%;
-        border-top: 3px solid transparent;
-        border-bottom: 3px solid $white;
-        border-left: 3px solid $white;
-        border-right: 3px solid transparent;
-        transform: translate(calc(50% - 3px), -50%) rotate(45deg);
+        border-top-color: transparent;
+        border-bottom-color: $white;
+        border-left-color: $white;
+        border-right-color: transparent;
+        transform: translate(calc(50% - 5px), -50%) rotate(45deg);
       }
       &:disabled {
         &:after {
-          border-bottom: 3px solid lighten(black, 25%);
-          border-left: 3px solid lighten(black, 25%);
-        }
-      }
-      &:not(:disabled) {
-        &:hover {
-          &:after {
-            border-bottom-color: $black;
-            border-left-color: $black;
-          }
+          border-bottom-color: lighten(black, 25%);
+          border-left-color: lighten(black, 25%);
         }
       }
     }
@@ -470,24 +466,16 @@
       right: 0;
       &:after {
         left: 50%;
-        border-top: 3px solid $white;
-        border-bottom: 3px solid transparent;
-        border-left: 3px solid transparent;
-        border-right: 3px solid $white;
-        transform: translate(calc(-50% + 3px), -50%) rotate(45deg);
+        border-top-color: $white;
+        border-bottom-color: transparent;
+        border-left-color: transparent;
+        border-right-color: $white;
+        transform: translate(calc(-50% + 5px), -50%) rotate(45deg);
       }
       &:disabled {
         &:after {
-          border-top: 3px solid lighten(black, 25%);
-          border-right: 3px solid lighten(black, 25%);
-        }
-      }
-      &:not(:disabled) {
-        &:hover {
-          &:after {
-            border-top-color: $black;
-            border-right-color: $black;
-          }
+          border-top-color: lighten(black, 25%);
+          border-right-color: lighten(black, 25%);
         }
       }
     }
@@ -496,15 +484,15 @@
     display: flex;
     flex-direction: column;
     flex: 1;
-    gap: 75px;
-    overflow: hidden;
+    gap: 30px;
+    transition: transform 0.3s ease-in-out;
     .project {
       display: flex;
       align-items: center;
-      gap: 5%;
+      gap: 50px;
       .left {
-        width: 550px;
-        padding-top: 200px;
+        width: 450px;
+        height: 220px;
         flex-shrink: 0;
         display: flex;
         box-shadow: border-box;
@@ -513,6 +501,15 @@
         justify-content: center;
         position: relative;
         z-index: 1;
+        img,
+        object,
+        video,
+        svg {
+          height: 100%;
+          width: 100%;
+          object-fit: cover;
+          object-position: top left;
+        }
         &:after {
           position: absolute;
           content: "";
@@ -524,19 +521,24 @@
         }
       }
       .right {
-        font-size: 20px;
-        line-height: 1.7;
+        font-size: 16px;
+        line-height: 1.5;
         letter-spacing: 1px;
         width: 40ch;
         .title {
-          font-size: 40px;
+          font-size: 30px;
           font-family: "Krona One", sans-serif;
           margin-bottom: 10px;
+          width: 20ch;
+        }
+        .text {
+          font-size: 16px;
+          width: 40ch;
         }
       }
       @for $x from 1 through 12 {
         &:nth-child(#{$x}) {
-          margin-left: ($x - 1) * 550px;
+          margin-left: ($x - 1) * 450px;
         }
       }
     }
