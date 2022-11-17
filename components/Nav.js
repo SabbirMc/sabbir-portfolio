@@ -1,8 +1,8 @@
-import React, { useState, useContext } from "react";
+import React, { useContext } from "react";
 import Context from "./context/context";
 
 const Nav = () => {
-  const { activeNav, setActiveNav, ref, sectionVisible, setSectionVisible } =
+  const { activeNav, setActiveNav, ref, sectionVisible, setSideTabVisible } =
     useContext(Context);
 
   const navItem = [
@@ -29,6 +29,12 @@ const Nav = () => {
     setTimeout(() => {
       setActiveNav(false);
     }, 1000);
+
+    setSideTabVisible(false);
+    setTimeout(() => {
+      setActiveSideTab("");
+      setActiveSkill(null);
+    }, 300);
   };
 
   return (

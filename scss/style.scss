@@ -6,6 +6,8 @@
   background: $base;
   height: 100vh;
   overflow-y: scroll;
+  transform: translateX(0);
+  transition: transform 0.3s cubic-bezier(0.6, -0.08, 0.735, 0.045);
   &::-webkit-scrollbar {
     width: 4px;
   }
@@ -18,6 +20,9 @@
   }
   &.smooth_scroll {
     scroll-snap-type: y mandatory;
+  }
+  &.secondary-screen-active {
+    transform: translateX(-100vw);
   }
 }
 .section {
@@ -223,10 +228,11 @@
       font-family: "Playfair Display", serif;
       color: rgba($white, 0.75);
       .sponsor_name {
-        font-size: 14px;
+        font-size: 13px;
         font-family: "DM Sans", sans-serif;
         color: $white;
         text-transform: uppercase;
+        font-style: italic;
         &:hover {
           color: $primary;
         }
@@ -597,6 +603,112 @@
             background: $primary;
           }
         }
+      }
+    }
+  }
+}
+
+.secondary-screen {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  transition: transform 0.3s cubic-bezier(0.6, -0.08, 0.735, 0.045);
+  transform: translateX(100vw);
+  &.active {
+    transform: translateX(0);
+  }
+}
+
+.secondary-screen-inner {
+  height: calc(100vh - 300px);
+  min-height: 400px;
+  width: 100%;
+  background: $black;
+  position: relative;
+  padding: 50px;
+  .screen-close-button {
+    position: absolute;
+    top: 15px;
+    right: 20px;
+    height: 30px;
+    width: 30px;
+    &:before,
+    &:after {
+      content: "";
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      width: 30px;
+      height: 3px;
+      background: $white;
+      transform-origin: center center;
+    }
+    &:before {
+      transform: translateX(-50%) translateY(-50%) rotate(35deg);
+    }
+    &:after {
+      transform: translateX(-50%) translateY(-50%) rotate(-35deg);
+    }
+  }
+}
+
+.skill-wrapper {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  height: 100%;
+  gap: 50px;
+  .skill-image {
+    align-self: center;
+    height: 100%;
+    max-height: 500px;
+    background: $secondary;
+  }
+  .skill-details {
+    align-self: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+    .skill-title {
+      font-family: "Krona One", sans-serif;
+      font-weight: 400;
+      font-size: 40px;
+      line-height: 50px;
+      letter-spacing: -0.1em;
+      text-transform: uppercase;
+      color: #ffffff;
+      &:not(:last-child) {
+        margin-bottom: 30px;
+      }
+    }
+    .skill-description {
+      font-weight: 400;
+      font-size: 20px;
+      line-height: 30px;
+      color: #ffffff;
+      &:not(:last-child) {
+        margin-bottom: 30px;
+      }
+    }
+    .skill-link {
+      border: 1px solid $primary;
+      min-height: 50px;
+      font-family: "Playfair Display", serif;
+      border-radius: 50px;
+      padding: 2px 30px;
+      font-size: 22px;
+      color: $white;
+      line-height: 0.5;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      cursor: pointer;
+      transition: all 0.2s linear;
+      &:hover {
+        background: $primary;
+        text-shadow: -1px -1px 5px rgba($black, 0.2);
       }
     }
   }

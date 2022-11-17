@@ -3,7 +3,13 @@ import Context from "./context/context";
 import { InView } from "react-intersection-observer";
 
 const About = () => {
-  const { ref, setSectionVisible } = useContext(Context);
+  const { ref, setSectionVisible, setSideTabVisible, setActiveSideTab } =
+    useContext(Context);
+
+  const handleClick = () => {
+    setSideTabVisible(true);
+    setActiveSideTab("video");
+  };
 
   return (
     <section
@@ -20,7 +26,10 @@ const About = () => {
         </h1>
         <div className="about_content">
           <div className="left">
-            <button className="play_button"></button>
+            <button
+              className="play_button"
+              onClick={() => handleClick()}
+            ></button>
             <video>
               <source
                 src="https://www.w3schools.com/html/mov_bbb.mp4"

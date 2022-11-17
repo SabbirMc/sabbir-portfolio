@@ -1,11 +1,23 @@
 import React, { useContext } from "react";
-import Link from "next/link";
 import Marquee from "react-fast-marquee";
 import Context from "./context/context";
 import { InView } from "react-intersection-observer";
 
 const Services = () => {
-  const { ref, setSectionVisible } = useContext(Context);
+  const {
+    ref,
+    setSectionVisible,
+    setSideTabVisible,
+    setActiveSideTab,
+    skillSet,
+    setActiveSkill,
+  } = useContext(Context);
+
+  const handleSkillClick = (skill) => {
+    setSideTabVisible(true);
+    setActiveSideTab("skill");
+    setActiveSkill(skill);
+  };
 
   return (
     <section
@@ -30,41 +42,15 @@ const Services = () => {
           speed={100}
         >
           <div className="service_slider_inner">
-            <Link href="/">
-              <a className="service">
-                <span className="text">Brand Identity</span>
-              </a>
-            </Link>
-            <Link href="/">
-              <a className="service">
-                <span className="text">Web App</span>
-              </a>
-            </Link>
-            <Link href="/">
-              <a className="service">
-                <span className="text">Brand Identity</span>
-              </a>
-            </Link>
-            <Link href="/">
-              <a className="service">
-                <span className="text">Visual Design</span>
-              </a>
-            </Link>
-            <Link href="/">
-              <a className="service">
-                <span className="text">Product Design</span>
-              </a>
-            </Link>
-            <Link href="/">
-              <a className="service">
-                <span className="text">Web Design</span>
-              </a>
-            </Link>
-            <Link href="/">
-              <a className="service">
-                <span className="text">Mobile App</span>
-              </a>
-            </Link>
+            {skillSet?.map(({ title }) => (
+              <button
+                className="service"
+                key={Math.random()}
+                onClick={() => handleSkillClick(title)}
+              >
+                <span className="text">{title}</span>
+              </button>
+            ))}
           </div>
         </Marquee>
         <Marquee
@@ -74,41 +60,15 @@ const Services = () => {
           speed={100}
         >
           <div className="service_slider_inner">
-            <Link href="/">
-              <a className="service">
-                <span className="text">Brand Identity</span>
-              </a>
-            </Link>
-            <Link href="/">
-              <a className="service">
-                <span className="text">Web App</span>
-              </a>
-            </Link>
-            <Link href="/">
-              <a className="service">
-                <span className="text">Brand Identity</span>
-              </a>
-            </Link>
-            <Link href="/">
-              <a className="service">
-                <span className="text">Visual Design</span>
-              </a>
-            </Link>
-            <Link href="/">
-              <a className="service">
-                <span className="text">Product Design</span>
-              </a>
-            </Link>
-            <Link href="/">
-              <a className="service">
-                <span className="text">Web Design</span>
-              </a>
-            </Link>
-            <Link href="/">
-              <a className="service">
-                <span className="text">Mobile App</span>
-              </a>
-            </Link>
+            {skillSet?.map(({ title }) => (
+              <button
+                className="service"
+                key={Math.random()}
+                onClick={() => handleSkillClick(title)}
+              >
+                <span className="text">{title}</span>
+              </button>
+            ))}
           </div>
         </Marquee>
       </div>

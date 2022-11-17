@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useContext, useRef } from "react";
+import React, { useState, useEffect, useContext } from "react";
 import Context from "./context/context";
 import { InView } from "react-intersection-observer";
 
@@ -41,7 +41,6 @@ const Projects = () => {
   };
 
   useEffect(() => {
-    console.log(activeProject);
     activeProject == 0
       ? setPrevButtonDisable(true)
       : setPrevButtonDisable(false);
@@ -55,7 +54,6 @@ const Projects = () => {
       className="section projects_section"
       ref={(r) => (ref.current[2] = r)}
     >
-      {console.log(prevButtonDisable, nextButtonDisable)}
       <InView
         as="div"
         className="container"

@@ -15,12 +15,12 @@ const Footer = () => {
           <Link href="/">
             <a className="footer_content_link">Linkedin</a>
           </Link>
-          {/* <div className="footer_sponsor">
+          <div className="footer_sponsor">
             Powered by
             <Link href="/">
               <a className="sponsor_name">Sapan Mozammel</a>
             </Link>
-          </div> */}
+          </div>
         </nav>
       </div>
     </footer>
